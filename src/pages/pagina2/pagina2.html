@@ -6,7 +6,12 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>pagina2</ion-title>
+    <ion-title>{{pais}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="buscar()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 

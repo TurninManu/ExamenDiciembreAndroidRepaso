@@ -43,7 +43,7 @@ export class HomePage {
     }
     
     if(this.formulario.value["usuario"]=="examen" && this.formulario.value["clave"]=="1234" && this.formulario.value["pais"]!=null){
-      this.navCtrl.push(Pagina2Page);
+      this.navCtrl.push(Pagina2Page, {"pais":this.formulario.value["pais"]});
       console.log(this.formulario.value["pais"] + "    "+ this.formulario.value["pais"]);
     } 
   }
