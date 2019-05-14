@@ -1,3 +1,7 @@
 1. Seleccionar valor por defecto en ion-select
 2. Mostar varios toast
 3. Mostrar código país ejercicio1
+----
+1. Ejercicio 2 poblema al leer los datos
+---
+Se puede hacer el último ejercicio?

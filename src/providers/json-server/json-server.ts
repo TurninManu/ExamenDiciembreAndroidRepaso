@@ -1,6 +1,7 @@
 import { Persona } from './../../modelo/persona';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Direccion } from '../../modelo/direccion';
 
 /*
   Generated class for the JsonServerProvider provider.
@@ -22,9 +23,27 @@ export class JsonServerProvider {
 
   public getPersonas(codPais:string, numeroPersonas:number){
     console.log(codPais, numeroPersonas)
-    this.http.get("https://randomuser.me/api/?nat="+codPais+"&results="+numeroPersonas).subscribe((data:any) => {
-      console.log(data)
-      this.listener.onGetPersonasResponse(data, null);
+    this.http.get("https://randomuser.me/api/?nat="+codPais+"&results="+numeroPersonas).subscribe((data:Persona[]) => {
+      let personasAux:Persona[]=new Array<Persona>();
+
+      data["results"].forEach(element => {
+        personasAux.push(new Persona(
+          element["gender"],
+          element["name"]["last"],
+          element["name"]["first"],
+          new Direccion(element["location"]["street"], element["location"]["city"], element["location"]["state"], element["location"]["postcode"]),
+          element["email"],
+          element["login"]["username"],
+          element["login"]["password"],
+          element["phone"],
+          element["picture"]["large"],
+          element["picture"]["medium"],
+          element["picture"]["thumbnail"]
+        ));
+      });
+
+
+      this.listener.onGetPersonasResponse(personasAux, null);
     }),
     (error => {
       this.listener.onGetPersonasResponse(null, "Error al leer las personas");
@@ -35,5 +54,5 @@ export class JsonServerProvider {
 }
 
 export interface UserServiceProviderListener {
-  onGetPersonasResponse(persona:Persona[], error:string);
+  onGetPersonasResponse(personas:Persona[], error:string);
   }

@@ -60,10 +60,15 @@ export class Pagina2Page implements UserServiceProviderListener{
     alert.present();
   }
 
+  public datos(indice:number){
+    console.log(this.personas[indice]);
+  }
 
-  onGetPersonasResponse(persona:Persona[], error: string) {
+
+  onGetPersonasResponse(personas:Persona[], error: string) {
     if(error==null){
-      this.personas=persona;
+      this.personas=personas;
+      console.log(this.personas)
     }else{
       const toast = this.toastController.create({
         message: error,

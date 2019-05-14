@@ -17,4 +17,11 @@
 
 <ion-content padding>
 
+  <ion-list *ngFor="let p of personas;index as i">
+    <img src="{{p.urlImagenMedium}}"/>
+    <ion-item (click)="datos(i)" >
+      <ion-label>{{p.direccion.ciudad}}</ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>

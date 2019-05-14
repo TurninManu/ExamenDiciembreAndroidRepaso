@@ -9,6 +9,8 @@ import { NavController, ToastController } from 'ionic-angular';
 })
 export class HomePage {
 
+  paises:string[][]=[["AU", "australia"], ["BR", "brasil"], ["DE", "alemania"], ["DK", "dinamarca"], 
+  ["ES", "españa"], ["IR", "irán"]];
   formulario:FormGroup;
 
   constructor(public navCtrl: NavController, public toastController: ToastController) {
@@ -44,7 +46,7 @@ export class HomePage {
     
     if(this.formulario.value["usuario"]=="examen" && this.formulario.value["clave"]=="1234" && this.formulario.value["pais"]!=null){
       this.navCtrl.push(Pagina2Page, {"pais":this.formulario.value["pais"]});
-      console.log(this.formulario.value["pais"] + "    "+ this.formulario.value["pais"]);
+      console.log(this.formulario.value["pais"] + "    "+ this.paises[1][1]);
     } 
   }
 
