@@ -18,10 +18,12 @@ import { Persona } from '../../modelo/persona';
 export class Pagina2Page implements UserServiceProviderListener{ 
  
   pais:string;
+  clavePais:string;
   personas:Persona[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertController: AlertController, public jsonServerProvider:JsonServerProvider, public toastController:ToastController) {
     this.pais=navParams.get("pais");
+    this.clavePais=navParams.get("clavePais");
     this.jsonServerProvider.setListener(this);
     console.log(this.pais);
   }
@@ -51,7 +53,7 @@ export class Pagina2Page implements UserServiceProviderListener{
         }, {
           text: 'Ok',
           handler: data => {
-            this.jsonServerProvider.getPersonas(this.pais,data.numero);
+            this.jsonServerProvider.getPersonas(this.clavePais,data.numero);
           }
         }
       ]
